@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/htmx.org@1.9.4"></script>
+    <title>Golang + HTMX</title>
+</head>
+
+<body>
+    <h1>Golang + HTMX</h1>
+    <form hx-post="/add-film/" hx-target="#film-list" hx-swap="beforeend">
+        <input type="text" name="title" />
+        <input type="text" name="director" />
+        <button type="submit">Add Film</button>
+    </form>
+    <ul id="film-list">
+        {{ range .Films }}
+        <li> {{ .Title }} - {{ .Director }}</li>
+        {{ end }}
+    </ul>
+</body>
+
+</html>
